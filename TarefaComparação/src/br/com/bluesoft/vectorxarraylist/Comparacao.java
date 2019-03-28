@@ -1,5 +1,6 @@
 package br.com.bluesoft.vectorxarraylist;
 
+import br.com.bluesoft.ListxSet.ListxSet;
 import br.com.bluesoft.padawan.Padawan;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.Vector;
 public class Comparacao {
 
     public static void main(String[] args) {
+        ListxSet classe = new ListxSet();
 
         List<Padawan> timePadawanVector = new Vector<>();
 
@@ -35,25 +37,8 @@ public class Comparacao {
         timePadawanVector.forEach(System.out::println);
 
 
-        long tempoInicialVector = System.currentTimeMillis();
-        for (int i = 0; i < 10000000 ; i++) {
-            timePadawanVector.add(new Padawan("Pi", 22,26));
-        }
-        System.out.println("Tempo para inserir 10000000 de elementos dentro de um Vector: " +(System.currentTimeMillis() - tempoInicialVector));
         System.out.println();
-
-        long tempoInicialArrayList = System.currentTimeMillis();
-        for (int i = 0; i < 10000000 ; i++) {
-            timePadawanArrayList.add(new Padawan("Cestaro", 33, 24));
-        }
-        System.out.println("Tempo para inserir 10000000 de elementos dentro de um ArrayList: " +(System.currentTimeMillis() - tempoInicialArrayList));
-
-
-
-
-
-
-
-
+        classe.tempoExecucao(timePadawanVector, "Vector");
+        classe.tempoExecucao(timePadawanArrayList, "ArrayList");
     }
 }

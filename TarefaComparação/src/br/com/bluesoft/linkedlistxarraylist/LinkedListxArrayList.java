@@ -1,5 +1,6 @@
 package br.com.bluesoft.linkedlistxarraylist;
 
+import br.com.bluesoft.ListxSet.ListxSet;
 import br.com.bluesoft.padawan.Padawan;
 
 import java.math.BigDecimal;
@@ -11,7 +12,7 @@ import java.util.function.Consumer;
 
 public class LinkedListxArrayList {
     public static void main(String[] args) {
-
+        ListxSet classe = new ListxSet();
         List<Padawan> PadawanArrayList = new ArrayList<>();
         List<Padawan> PadawanLinkedList = new LinkedList<>();
 
@@ -42,38 +43,12 @@ public class LinkedListxArrayList {
         System.lineSeparator();
         System.out.println();
 
-       long tempoAdd = System.currentTimeMillis();
-        for (int i = 0; i < 100000; i++) {
-            PadawanArrayList.add(new Padawan("Wesley Vitor", 4, 20 ));
-        }
-        System.out.println("Tempo de duração para adicionar um novo elemento ao fim da fila (ARRAYLIST): " + (System.currentTimeMillis() - tempoAdd));
+        classe.tempoExecucao(PadawanArrayList, "ArrayList");
+        classe.tempoExecucao(PadawanLinkedList, "LinkedList");
 
-        long tempoAddLinkedlist = System.currentTimeMillis();
-        for (int i = 0; i < 100000; i++) {
-            PadawanLinkedList.add(new Padawan("Wesley Vitor", 4, 20 ));
-        }
-        System.out.println("Tempo de duração para adicionar um novo elemento ao fim da fila (LINKEDLIST): " + (System.currentTimeMillis() - tempoAddLinkedlist));
+        System.out.println();
 
-        long tempoInicialRemoveAL = System.currentTimeMillis();
-        PadawanArrayList.remove(PadawanArrayList.get(5000));
-        System.out.println("Tempo de execução para remover o item 5000 do (ARRAYLIST): " + (System.currentTimeMillis() - tempoInicialRemoveAL));
-
-        long tempoInicialRemoveLL = System.currentTimeMillis();
-        PadawanLinkedList.remove(PadawanArrayList.get(5000));
-        System.out.println("Tempo de execução para remover o item 5000 do (LINKEDLIST): " + (System.currentTimeMillis() - tempoInicialRemoveLL));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        classe.tempoRemocao(PadawanArrayList, "ArrayList");
+        classe.tempoRemocao(PadawanLinkedList, "LinkedList");
     }
 }

@@ -10,10 +10,7 @@ import java.util.*;
 
 public class ListxSet {
 
-
-
-
-    void tempoExecucao (Set<Padawan> lista, String nome ){
+    public void tempoExecucao (Set<Padawan> lista, String nome ){
 
         long tempoInicial = System.currentTimeMillis();
 
@@ -23,7 +20,7 @@ public class ListxSet {
         System.out.println("Tempo de duração para adicionar um novo elemento ao fim da fila (" +nome + "): " + (System.currentTimeMillis() - tempoInicial));
     }
 
-    void tempoExecucao (List<Padawan> lista, String nome ){
+    public void tempoExecucao (List<Padawan> lista, String nome ){
 
         long tempoInicial = System.currentTimeMillis();
 
@@ -31,6 +28,12 @@ public class ListxSet {
             lista.add(new Padawan("Wesley Vitor", 4, 20 ));
         }
         System.out.println("Tempo de duração para adicionar um novo elemento ao fim da fila (" +nome + "): " + (System.currentTimeMillis() - tempoInicial));
+    }
+
+    public void tempoRemocao (List<Padawan> lista, String nome){
+        long tempoInicial = System.currentTimeMillis();
+        lista.remove(lista.get(10000));
+        System.out.println("Tempo de execução para remover o item 10000 do (" + nome + "): " + (System.currentTimeMillis() - tempoInicial));
     }
 
 
@@ -92,23 +95,5 @@ public class ListxSet {
         classe.tempoExecucao(PadawanHashSet, "HashSet");
         classe.tempoExecucao(PadawanLinkedHashSet, "LinkedHashSet");
         classe.tempoExecucao(PadawanTreeSet, "TreeSet");
-
-        System.out.println();
-        System.out.println();
-        long tempoInicialRemoveAL = System.currentTimeMillis();
-        PadawanArrayList.remove(PadawanArrayList.get(10000));
-        System.out.println("Tempo de execução para remover o item 10000 do (ARRAYLIST): " + (System.currentTimeMillis() - tempoInicialRemoveAL));
-
-        long tempoInicialRemoveHS = System.currentTimeMillis();
-        PadawanHashSet.remove(PadawanArrayList.get(10000));
-        System.out.println("Tempo de execução para remover o item 10000 do (HASHSET): " + (System.currentTimeMillis() - tempoInicialRemoveHS));
-
-        long tempoInicialRemoveLHS = System.currentTimeMillis();
-        PadawanLinkedHashSet.remove(PadawanArrayList.get(10000));
-        System.out.println("Tempo de execução para remover o item 10000 do (LINKEDHASHSET): " + (System.currentTimeMillis() - tempoInicialRemoveLHS));
-
-        long tempoInicialRemoveTS = System.currentTimeMillis();
-        PadawanTreeSet.remove(PadawanArrayList.get(10000));
-        System.out.println("Tempo de execução para remover o item 10000 do (TREESET): " + (System.currentTimeMillis() - tempoInicialRemoveTS));
     }
 }
