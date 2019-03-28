@@ -10,8 +10,32 @@ import java.util.*;
 
 public class ListxSet {
 
-    public static void main(String[] args){
 
+
+
+    void tempoExecucao (Set<Padawan> lista, String nome ){
+
+        long tempoInicial = System.currentTimeMillis();
+
+        for (int i = 0; i < 100000; i++) {
+            lista.add(new Padawan("Wesley Vitor", 4, 20 ));
+        }
+        System.out.println("Tempo de duração para adicionar um novo elemento ao fim da fila (" +nome + "): " + (System.currentTimeMillis() - tempoInicial));
+    }
+
+    void tempoExecucao (List<Padawan> lista, String nome ){
+
+        long tempoInicial = System.currentTimeMillis();
+
+        for (int i = 0; i < 100000; i++) {
+            lista.add(new Padawan("Wesley Vitor", 4, 20 ));
+        }
+        System.out.println("Tempo de duração para adicionar um novo elemento ao fim da fila (" +nome + "): " + (System.currentTimeMillis() - tempoInicial));
+    }
+
+
+    public static void main(String[] args){
+        ListxSet classe = new ListxSet();
 
         List<Padawan> PadawanArrayList = new ArrayList<>();
         Set<Padawan> PadawanHashSet = new HashSet<>();
@@ -44,20 +68,47 @@ public class ListxSet {
         System.out.println("Data da consulta: " + LocalDate.of(2022, 12, 5).format(formatadorLocalDate));
         System.out.println();
 
+        System.out.println("ARRAYLIST");
         PadawanArrayList.forEach(System.out::println);
         System.out.println();
         System.out.println();
 
+        System.out.println("HASHSET");
         PadawanHashSet.forEach(System.out::println);
         System.out.println();
         System.out.println();
 
+        System.out.println("LINKEDHASHSET");
         PadawanLinkedHashSet.forEach(System.out::println);
         System.out.println();
         System.out.println();
 
+        System.out.println("TREESET");
         PadawanTreeSet.forEach(System.out::println);
         System.out.println();
         System.out.println();
+
+        classe.tempoExecucao(PadawanArrayList, "ArrayList");
+        classe.tempoExecucao(PadawanHashSet, "HashSet");
+        classe.tempoExecucao(PadawanLinkedHashSet, "LinkedHashSet");
+        classe.tempoExecucao(PadawanTreeSet, "TreeSet");
+
+        System.out.println();
+        System.out.println();
+        long tempoInicialRemoveAL = System.currentTimeMillis();
+        PadawanArrayList.remove(PadawanArrayList.get(10000));
+        System.out.println("Tempo de execução para remover o item 10000 do (ARRAYLIST): " + (System.currentTimeMillis() - tempoInicialRemoveAL));
+
+        long tempoInicialRemoveHS = System.currentTimeMillis();
+        PadawanHashSet.remove(PadawanArrayList.get(10000));
+        System.out.println("Tempo de execução para remover o item 10000 do (HASHSET): " + (System.currentTimeMillis() - tempoInicialRemoveHS));
+
+        long tempoInicialRemoveLHS = System.currentTimeMillis();
+        PadawanLinkedHashSet.remove(PadawanArrayList.get(10000));
+        System.out.println("Tempo de execução para remover o item 10000 do (LINKEDHASHSET): " + (System.currentTimeMillis() - tempoInicialRemoveLHS));
+
+        long tempoInicialRemoveTS = System.currentTimeMillis();
+        PadawanTreeSet.remove(PadawanArrayList.get(10000));
+        System.out.println("Tempo de execução para remover o item 10000 do (TREESET): " + (System.currentTimeMillis() - tempoInicialRemoveTS));
     }
 }
